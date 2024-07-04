@@ -4,7 +4,7 @@ from keras.preprocessing.image import ImageDataGenerator
 (Tensorflow is ML library and used to build & train ML models in image recognition, NLP, Speech recog., Recommendar system)
 
 
-tf.__version__   // to checj=k the version of tensorflow
+tf.__version__   // to check the version of tensorflow
 (Here ImageDataGenerator class will generate batches of tensor image data with real time augmentation)
 
 Preprocessing the image:
