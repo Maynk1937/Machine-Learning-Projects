@@ -1,1 +1,48 @@
+Setup:
+import tensorflow as tf
+from keras.preprocessing.image import ImageDataGenerator
+(Tensorflow is ML library and used to build & train ML models in image recognition, NLP, Speech recog., Recommendar system)
+
+
+tf.__version__   // to checj=k the version of tensorflow
+(Here ImageDataGenerator class will generate batches of tensor image data with real time augmentation)
+
+Preprocessing the image:
+First some transformations will be applied to the image like geometrical transformation, zoom or rotating the image. All these transformations are applied to prevent overfitting and to get Augmented Image to increase the diversity of image. 
+
+(Coloured Immages act as 3-D arrays while B/W images act as 2-D array of zeroes and ones)
+(
+Initialising the CNN:- 
+    cnn = tf.keras.models.Sequential()
+    (Sequentiql class allows to create ANN and CNN as a sequence of layers)
+
+    Step 1- Adding Convolutional layer:
+    cnn.add(tf.keras.layers.Conv2D(filters = 32, kernel_size = 3, activation = 'relu', input_shape = [64,64,3]))
+    ( Convolutional Layer is a object of Conv2D class. This class is dense which allows to build a fully connected layers)
+     Various Parameters of Conv2D layer:
+     1. Filters:
+        No. of filter detectors/Kernels/Feature Detectors applied on the image.
+     2. Kernel_size : 
+        Size of the feature detector.
+     3. Activation Function:
+        Now relu activation function is applied to increase the non-linearity of image.
+
+    Step 2 - MAX Pooling:
+    cnn.add(tf.keras.layers.MaxPool2D(pool_size = (2,2), strides = 2))
+    Neural Network has a property spacal invariance thus it doesn't care where the features are allocated. So, that why pooling is 
+    applied.
+    In max pooling basically a matrice of 2*2 or 3*3 iterate over featured map after feature extraction to create pooled map and it 
+    contain only place where maximum features are present.       
+
+    Step 3 - Flatening
+    cnn.add(tf.keras.layers.Flatten())
+    Pooled feature map is now flattened into a column which later are input to an Artificial Neural Network(ANN) for further processing.)
+
+    Step 4 - Full Connection
+    All these adding layers is addinng ANN to our CNN.
+
+Compiling the CNN
+    It is now connected to an optimizer, a loss functon and some metrics.
+    Adam optimizer is used here to perform stochastic gradient descent to update the weight in order to reduce the loss error b/w the 
+    prediction and target.
 
